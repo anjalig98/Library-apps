@@ -1,6 +1,6 @@
 const express=require('express');
 const app=new express;
-const port = process.env.PORT || 2000;
+// const port = process.env.PORT || 2000;
 const nav=[
     {
         link:'/books',name:'Books'
@@ -12,7 +12,7 @@ const nav=[
 
 
 const booksRouter=require('./src/routes/bookRoutes')(nav);
-const authorsRouter=require('./src/routes/authorRoute')(nav);
+const authorsRouter=require('./src/routes/authorRoutes')(nav);
 const newbooksRouter=require('./src/routes/newbooksRoute')(nav);
 const newauthorsRouter=require('./src/routes/newauthorsRoute')(nav);
 const signupRouter=require('./src/routes/signupRoute')(nav);
@@ -39,6 +39,6 @@ app.get('/',function(req,res){
 });
 
 
+app.listen(2560);
 
-
-app.listen(port,()=>{console.log("Server ready at" + port)});
+// app.listen(port,()=>{console.log("Server ready at" + port)});
