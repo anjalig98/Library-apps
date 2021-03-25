@@ -1,12 +1,12 @@
 const express=require('express');
 const app=new express;
-// const port = process.env.PORT || 2000;
+const port = process.env.PORT || 2000;
 const nav=[
     {
         link:'/books',name:'Books'
     },
     {
-        link:'/author',name:'Authors'
+        link:'/authors',name:'Authors'
     }
 ]
 
@@ -39,6 +39,6 @@ app.get('/',function(req,res){
 });
 
 
-app.listen(2560);
+// app.listen(2560);
 
-// app.listen(port,()=>{console.log("Server ready at" + port)});
+app.listen(port,()=>{console.log("Server ready at" + port)});

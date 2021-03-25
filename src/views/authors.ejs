@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
-		<title><%=title%></title>
+		<title>Authors</title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -33,14 +33,17 @@
         </li>
         <%}%>
         <li >
-          <a href="/signup">Signup</a>
-        </li>
-        <li>
-          <a href="/login">Login</a>
-        </li>
-        <li >
-            <a href="/newauthor"><span class="label label-default">Add New Author</span></a>
-          </li>
+              <a href="/signup">Signup</a>
+            </li>
+            <li>
+              <a href="/login">Login</a>
+            </li>
+            <li>
+              <a href="/newbooks">add new book</a>
+            </li>
+            <li >
+              <a href="/newauthor">Add New Author</a>
+            </li>
         
       </ul>
       <ul class="nav navbar-right navbar-nav">
@@ -110,7 +113,7 @@
               <h3><%=authors[i].title%></h3>
               <div class="row">
                 <div class="col-xs-9">
-                  <h4><span class="label label-default"><%=authors[i].author%></span></h4><h4>
+                  <div style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif" class="text-muted"><%=authors[i].description%></div>
                   <small style="font-family:courier,'new courier';" class="text-muted"><%=authors[i].genre%>
                   <a href="/authors/<%=i%>" class="text-muted">Read More</a></small>
                   </h4></div>

@@ -4,19 +4,19 @@ function router(nav){
     var books=[
         {
             title:'Tom and Jerry',
-            author:'Joseph Barbera',
+            authore:'Joseph Barbera',
             genre:'cartoon',
             img:'tom.jpg'
         },
         {
             title:'Harry Potter',
-            author:'J.K.Rowling',
+            authore:'J.K.Rowling',
             genre:'Fantasy',
             img:'harrypotter.jpg'
         },
         {
             title:'Ink and Bone',
-            author:'Rachel Caine',
+            authore:'Rachel Caine',
             genre:'Fantasy',
             img:'download.jpg'
         }
