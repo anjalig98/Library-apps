@@ -158,7 +158,7 @@
     </div>
   </div>
 </footer>
-<!-- <script src="text/javascript">
+<script src="text/javascript">
   $(document).on("click", ".browse", function() {
   var file = $(this).parents().find(".file");
   file.trigger("click");
@@ -176,8 +176,8 @@ $('input[type="file"]').change(function(e) {
   reader.readAsDataURL(this.files[0]);
 });
 </script>
- script references -->
-		<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	<!-- script references -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script type="text/javascript">
     function validate(){
@@ -195,40 +195,41 @@ $('input[type="file"]').change(function(e) {
             errorname.style.color="red";
             return false;
         }
-    } -->
+    }
 
-    // </script>
-    // <script type="text/javascript">
-    //     function bdyear(){
-    //         var birthdeath= /^([0-9]{4})-([0-9]{4})+$/;
-    //         var erroryear=document.getElementById("erroryear");
-    //         var author=document.getElementById("author");
-    //         if(birthdeath.test(author.value)){
-    //             erroryear.innerHTML="";
-    //             return true;
-    //         }
-    //         else{
-    //             erroryear.innerHTML="Check Format ";
-    //             erroryear.style.color="red";
-    //             return false;
-    //         }
-    //     }
-    // </script>
-        <!-- //  <script type="text/javascript"> -->
-        <!-- //     function authorgenre(){
-        //         var letters = /^[A-Za-z ]*$/;
-        //         var errorgenre=document.getElementById("errorgenre");
-        //         var genre=document.getElementById("genre");
-        //         if(letters.test(genre.value)==1){
-        //             errorgenre.innerHTML="";
-        //             return true;
-        //         }
-        //         else if(letters.test(genre.value)==0){
-        //             errorgenre.innerHTML="Genre should contain only letters";
-        //             errorgenre.style.color="red";
-        //             return false;
-        //         }
-        //     }
-        </script> --> -->
+    </script>
+    <script type="text/javascript">
+        function bdyear(){
+            var birthdeath= /^([0-9]{4})-([0-9]{4})+$/;
+            var erroryear=document.getElementById("erroryear");
+            var author=document.getElementById("author");
+            if(birthdeath.test(author.value)){
+                erroryear.innerHTML="";
+                return true;
+            }
+            else{
+                erroryear.innerHTML="Check Format ";
+                erroryear.style.color="red";
+                return false;
+            }
+        }
+    
+        </script>
+        <script type="text/javascript">
+            function authorgenre(){
+                var letters = /^[A-Za-z ]*$/;
+                var errorgenre=document.getElementById("errorgenre");
+                var genre=document.getElementById("genre");
+                if(letters.test(genre.value)==1){
+                    errorgenre.innerHTML="";
+                    return true;
+                }
+                else if(letters.test(genre.value)==0){
+                    errorgenre.innerHTML="Genre should contain only letters";
+                    errorgenre.style.color="red";
+                    return false;
+                }
+            }
+        </script>
 	</body>
 </html>
