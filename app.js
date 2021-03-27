@@ -41,4 +41,4 @@ app.get('/',function(req,res){
 
 // app.listen(2560);
 
-app.listen(port,()=>{console.log("Server ready at" + port)});
+app.listen(port,()=>{console.log("Server ready at " + port)});
