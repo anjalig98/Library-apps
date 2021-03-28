@@ -3,7 +3,7 @@ const newauthorsRouter = express.Router();
 function router(nav){
 
 newauthorsRouter.get('/',function(req,res){
-    res.render("newauthor",
+    res.render("newauthors",
     {
         nav,
         title:'Authors'

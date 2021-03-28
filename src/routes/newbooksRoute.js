@@ -3,7 +3,7 @@ const newbooksRouter = express.Router();
 function router(nav){
 
 newbooksRouter.get('/',function(req,res){
-    res.render("newbook",
+    res.render("newbooks",
     {
         nav,
         title:'Authors'

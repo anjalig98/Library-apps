@@ -108,31 +108,36 @@ meter[value="4"]::-webkit-meter-optimum-value { background: green; }
     </div> 
   </div><!-- /cont -->
   <div class="container" style="width: 40%;">
-  <form onsubmit="return validate() && pswd() && matchPassword()" >
+  <form onsubmit="return validate() && pswd() && matchPassword()" style="background-color: rgba(0, 0, 0, 0.1); padding: 40px;" >
     <div class="form-row">
+      <label>Already have an Account <a href="/login" style="color:wheat ;">Sign-in</a> </label>
       <div class="form-group col-md-12">
         <label>First Name</label>
-        <input type="text" class="form-control"  placeholder="First Name"><br>
+        <input type="text" class="form-control"  placeholder="First Name" pattern="^[A-Za-z]*" title="Only Letters are allowed"><br>
         <label>Last Name</label>
-        <input type="text" class="form-control"  placeholder="Last Name" pattern="^[A-Za-z ]*" title="Only Letters are allowed"><br>
+        <input type="text" class="form-control"  placeholder="Last Name" pattern="^[A-Za-z]*" title="Only Letters are allowed"><br>
         <label for="inputEmail4">Email</label>
         <input type="email" class="form-control" id="email" placeholder="Email" onchange="return validate()">
-        <label for="" id="erroremail" style="color: red; font-size: x-small;"></label>
+        <label for="" id="erroremail" style=" font-size: x-small;"></label>
       </div>
       <div class="form-group col-md-6">
         <label for="inputPassword4">Password</label>
-        <input type="password" class="form-control" id="pass" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"  title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" >
+        <input type="password" class="form-control" id="pass" placeholder="Password" onchange="return pswd()" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" >
         <!-- <meter max="4" id="password-strength-meter"></meter>
         <label id="password-strength-text" style="font-size: small;font-weight: bold;"></label> -->
-        <label id="text" style="color: red; font-size: x-small;"></label>
+        <label id="errorpass" style=" font-size: x-small;"></label>
       </div>
       <div class="form-group col-md-6">
         <label for="inputPassword4">Confirm Password</label>
-        <input type="password" class="form-control" id="confirmpass" placeholder="Password" onchange="return matchPassword()">
-        <label for="" id="errorconfirm" style="color: red; font-size: x-small;"></label>
+        <input type="password" class="form-control" id="confirmpass" placeholder="Password" onchange="return matchPass()">
+        <label for="" id="errorconfirm" style=" font-size: x-small;"></label>
       </div>
     </div>
     <br>
+    <div class="group">
+      <input id="check" type="checkbox" class="check" checked>
+      <label for="check"><span class="icon"></span> Keep me Signed in</label>
+    </div>
     <div class="text-center">
     <button type="submit" style="width: 20%;" class="btn btn-primary">Submit</button><br><br>
   </div>
@@ -196,7 +201,8 @@ function validate(){
     // let regval=/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 
     if(regval.test(email.value)){
-        erroremail.innerHTML="";
+        erroremail.innerHTML="Email valid";
+        erroremail.style.color="green";
         return true;
     }else if(email.value==""){
         erroremail.innerHTML="Email Cannot be empty!!";
@@ -214,36 +220,40 @@ function validate(){
     
 var pass = document.getElementById('pass');
 var meter = document.getElementById('password-strength-meter');
-var text = document.getElementById('password-strength-text');
-var tex = document.getElementById('text');
+// var errorpass = document.getElementById('password-strength-text');
+var errorpass = document.getElementById('errorpass');
 tex.innerHTML="";
 function pswd(){
     var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
     var mediumRegex = new RegExp("^(?=.{6,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
     if(strongRegex.test(pass.value)){
-        tex.innerHTML="";
+        errorpass.innerHTML="password valid";
+        errorpass.style.color="green";
         return true;
     }else if(pass.value==""){
-        tex.innerHTML="";
+        errorpass.innerHTML="password cannot be empty";
+        errorpass.style.color="red";
         return false;
     }
     else{
-        tex.innerHTML="Password format is invalid";
+        errorpass.innerHTML="Must contain";
+        errorpass.style.color="red";
         return false;
     }
 }
-    </script>
-    <script type="text/javascript">  
-      function matchPass() {  
-        var pass = document.getElementById("pass");  
+        
         var confirmpass = document.getElementById("confirmpass");  
         var errorconfirm = document.getElementById("errorconfirm");  
+      function matchPass() {  
+        
         if(pass.value == confirmpass.value)  
         {   
-          errorconfirm.innerHTML=" ";  
+          errorconfirm.innerHTML="Password match "; 
+          errorconfirm.style.color="green";
           return true;
         } else {  
           errorconfirm.innerHTML="passwords did not match ";
+          errorconfirm.style.color="red";
           return false;
         }  
       }  

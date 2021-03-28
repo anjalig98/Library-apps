@@ -71,6 +71,10 @@ a,a:hover {
   text-decoration:none;
 }
 
+a:hover{
+  background-color: white;
+}
+
 .icon-bar {
   background-color:#fff;
 }
