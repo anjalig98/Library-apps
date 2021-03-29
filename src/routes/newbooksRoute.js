@@ -6,7 +6,7 @@ newbooksRouter.get('/',function(req,res){
     res.render("newbooks",
     {
         nav,
-        title:'Authors'
+        title:'Library'
     });
 });
 return newbooksRouter;
