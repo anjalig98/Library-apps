@@ -189,11 +189,11 @@ $('input[type="file"]').change(function(e) {
           var letters = /^[A-Za-z0-9 ]*$/;
           var errortitle=document.getElementById("errortitle");
           var booktitle=document.getElementById("booktitle");
-          if(letters.test(booktitle.value)==1){
+          if(letters.test(booktitle.value)){
               errortitle.innerHTML="";
               return true;
           }
-          else if(letters.test(booktitle.value)==0){
+          else{
               errortitle.innerHTML="Book name should contain only letters and numbers";
               errortitle.style.color="red";
               return false;
@@ -206,11 +206,11 @@ $('input[type="file"]').change(function(e) {
             var letters = /^[A-Za-z ]*$/;
             var errorauthor=document.getElementById("errorauthor");
             var author=document.getElementById("author");
-            if(letters.test(author.value)==1){
+            if(letters.test(author.value)){
                 errorauthor.innerHTML="";
                 return true;
             }
-            else if(letters.test(author.value)==0){
+            else {
                 errorauthor.innerHTML="Author's name should contain only letters";
                 errorauthor.style.color="red";
                 return false;
@@ -223,11 +223,11 @@ $('input[type="file"]').change(function(e) {
               var letters = /^[A-Za-z ]*$/;
               var errorgenre=document.getElementById("errorgenre");
               var genre=document.getElementById("genre");
-              if(letters.test(genre.value)==1){
+              if(letters.test(genre.value)){
                   errorgenre.innerHTML="";
                   return true;
               }
-              else if(letters.test(genre.value)==0){
+              else{
                   errorgenre.innerHTML="Genre should contain only letters";
                   errorgenre.style.color="red";
                   return false;
