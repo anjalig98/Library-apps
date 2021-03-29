@@ -186,7 +186,7 @@ $('input[type="file"]').change(function(e) {
     <script src="/js/bootstrap.min.js"></script>
     <script type="text/javascript">
       function validate(){
-          var letters = /^[A-Za-z0-9 ]*$/;
+          var letters = /^[A-Za-z0-9,'- ]*$/;
           var errortitle=document.getElementById("errortitle");
           var booktitle=document.getElementById("booktitle");
           if(letters.test(booktitle.value)){
