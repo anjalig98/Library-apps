@@ -3,15 +3,15 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
-		<title>Library</title>
+		<title><%=title%></title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
 		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<link href="/css/styles.css" rel="stylesheet">
+		<link href="/stylesheets/styles.css" rel="stylesheet">
 	</head>
 	<body>
 <header class="navbar navbar-bright navbar-fixed-top" role="banner">
@@ -23,28 +23,21 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/" class="navbar-brand">Home</a>
+      <a href="/home" class="navbar-brand">Home</a>
     </div>
     <nav class="collapse navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
-          <%for(i=0;i<nav.length;i++){%>
+        <%for (i=0;i<nav.length;i++){%>
         <li>
           <a href="<%=nav[i].link%>"><%=nav[i].name%></a>
         </li>
         <%}%>
         <li >
-              <a href="/signup">Signup</a>
-            </li>
-            <li>
-              <a href="/login">Login</a>
-            </li>
-            <li>
-              <a href="/newbook">Add book</a>
-            </li>
-            <li >
-              <a href="/newauthor">Add Author</a>
-            </li>
-        
+          <a href="/newauthor"><span class="label label-default">Add New Author</span></a>
+        </li>
+        <li >
+          <a href="/">Logout</a>
+        </li>
       </ul>
       <ul class="nav navbar-right navbar-nav">
         <li class="dropdown">
@@ -101,31 +94,30 @@
         <div class="panel-body">
           
           
-          
-          <!--/stories-->
           <%for(i=0;i<authors.length;i++){%>
+          <!--/stories-->
           <div class="row">    
             <br>
             <div class="col-md-2 col-sm-3 text-center">
-              <a class="story-title" href="#"><img alt="" src="/images/<%=authors[i].img%>" style="width:100px;height:100px" class="img-circle"></a>
+              <a class="story-title" href="#"><img alt="" src="/images/<%=authors[i].image%>" style="width:100px;height:100px" class="img-circle"></a>
             </div>
             <div class="col-md-10 col-sm-9">
               <h3><%=authors[i].title%></h3>
               <div class="row">
                 <div class="col-xs-9">
-                  <div style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif" class="text-muted"><%=authors[i].description%></div>
-                  <small style="font-family:courier,'new courier';" class="text-muted"><%=authors[i].genre%>
-                  <a href="/authors/<%=i%>" class="text-muted">Read More</a></small>
+                  <h4><span class="label label-default"><%=authors[i].year%></span></h4><h4>
+                  <small style="font-family:courier,'new courier';" class="text-muted"><%=authors[i].genre%> •<a href="/authors/<%=authors[i]._id%>" class="text-muted">Read More</a></small>
                   </h4></div>
                 <div class="col-xs-3"></div>
+          <a href="/authors/delete/<%=authors[i]._id%>" class="btn btn-danger">Delete</a>
+          <a href="/authors/update/<%=authors[i]._id%>" class="btn btn-success">Update</a>
+
               </div>
               <br><br>
             </div>
           </div>
-          <%}%>
           <hr>
-          
-   
+         <%}%>
           <!--/stories-->
           
           
@@ -183,6 +175,6 @@
 </footer>
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 	</body>
 </html>

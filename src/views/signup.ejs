@@ -3,40 +3,58 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
-		<title>Library </title>
+		<title>Library</title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
 		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<link href="/css/styles.css" rel="stylesheet">
+		<link href="/stylesheets/styles.css" rel="stylesheet">
   </head>
   <style>
-    meter {
-    padding-top: .5em;
-    width: 50%;
-    height: 20px;
-    background: none;
-    /* Required to get rid of the default background property */
-    
-   
-  }
-  meter::-moz-meter-bar {
-    box-shadow: 0 5px 5px -5px #999 inset;
-    background-image: linear-gradient( 90deg, #2286c9 5%, #FF00FF 5%, #FF00FF 15%, #04C319 15%, #04C319 55%, #F1F70D 55%, #F1F70D 95%, #00FFCC 95%, #00FFCC 100%);
-    background-size: 100% 100%;
-  }
-  /* meter[value="1"]::-webkit-meter-optimum-value { background:linear-gradient( red,rgba(233, 58, 4, 0.658)) }
-  meter[value="2"]::-webkit-meter-optimum-value { background:linear-gradient( yellow,rgb(141, 141, 7)) }
-  meter[value="3"]::-webkit-meter-optimum-value { background:linear-gradient( orange,rgb(121, 80, 5)) }
-  meter[value="4"]::-webkit-meter-optimum-value { background:linear-gradient( green,rgb(6, 77, 6) }
-   */
-   meter[value="1"]::-webkit-meter-optimum-value { background: red; }
-meter[value="2"]::-webkit-meter-optimum-value { background: yellow; }
-meter[value="3"]::-webkit-meter-optimum-value { background: orange; }
-meter[value="4"]::-webkit-meter-optimum-value { background: green; }
+    .file {
+  visibility: hidden;
+  position: absolute;
+}
+  
+		.login-form {
+			width: 300px;
+			margin: 0 auto;
+			font-family: Tahoma, Geneva, sans-serif;
+		}
+       
+		.login-form {
+			width: 300px;
+			margin: 0 auto;
+			font-family: Tahoma, Geneva, sans-serif;
+		}
+		.login-form h1 {
+			text-align: center;
+			color: #4d4d4d;
+			font-size: 24px;
+			padding: 20px 0 20px 0;
+		}
+		.login-form input[type="password"],
+		.login-form input[type="email"] {
+			width: 100%;
+			padding: 15px;
+			border: 1px solid #dddddd;
+			margin-bottom: 15px;
+			box-sizing:border-box;
+		}
+		.login-form input[type="submit"] {
+			width: 100%;
+			padding: 15px;
+			background-color:red;
+			border: 0;
+			box-sizing: border-box;
+			cursor: pointer;
+			font-weight: bold;
+			color: #ffffff;
+		}
+		</style>
   </style>
 	<body>
 <header class="navbar navbar-bright navbar-fixed-top" role="banner">
@@ -48,30 +66,16 @@ meter[value="4"]::-webkit-meter-optimum-value { background: green; }
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/" class="navbar-brand">Home</a>
-    </div>
-    <nav class="collapse navbar-collapse" role="navigation">
-      <ul class="nav navbar-nav">
-        <%for (i=0;i<nav.length;i++){%>
-        <li>
-          <a href="<%=nav[i].link%>"><%=nav[i].name%></a>
-        </li>
-        <%}%>
-       
-       
-        <li >
-            <a href="/signup">Signup</a>
-          </li>
-        <li>
-            <a href="/login">Login</a>
-        </li>
-        <!-- <li>
-          <a href="/newbooks">Add new book</a>
-        </li>
-        <li >
-          <a href="/newauthor">Add New Author</a>
-        </li> -->
       
+    </div>
+    <nav class="collapse navbar-collapse text-right" role="navigation">
+      <ul class="nav navbar-nav" style="text-align: right;">
+        
+        
+        <li >
+          <a href="/">Already a user? Login</a>
+        </li>
+        
       </ul>
       <ul class="nav navbar-right navbar-nav">
         <li class="dropdown">
@@ -91,7 +95,7 @@ meter[value="4"]::-webkit-meter-optimum-value { background: green; }
   <div class="container">
     <div class="row">
       <div class="col-md-7">
-        <h1>Signup</h1>
+        <h1>Create account
           <p class="lead"></p>
         </h1>
       </div>
@@ -107,48 +111,41 @@ meter[value="4"]::-webkit-meter-optimum-value { background: green; }
       </div>
     </div> 
   </div><!-- /cont -->
-  <div class="container" style="width: 40%;">
-  <form onsubmit="return validate() && pswd() && matchPassword()" style="background-color: rgba(0, 0, 0, 0.1); padding: 40px;" >
-    <div class="form-row">
-      <label>Already have an Account <a href="/login" style="color:wheat ;">Sign-in</a> </label>
-      <div class="form-group col-md-12">
-        <label>First Name</label>
-        <input type="text" class="form-control"  placeholder="First Name" pattern="^[A-Za-z]*" title="Only Letters are allowed"><br>
-        <label>Last Name</label>
-        <input type="text" class="form-control"  placeholder="Last Name" pattern="^[A-Za-z]*" title="Only Letters are allowed"><br>
-        <label for="inputEmail4">Email</label>
-        <input type="email" class="form-control" id="email" placeholder="Email" onchange="return validate()">
-        <label for="" id="erroremail" style=" font-size: x-small;"></label>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="top-spacer"> </div>
       </div>
-      <div class="form-group col-md-6">
-        <label for="inputPassword4">Password</label>
-        <input type="password" class="form-control" id="pass" placeholder="Password" onchange="return pswd()" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" >
-        <!-- <meter max="4" id="password-strength-meter"></meter>
-        <label id="password-strength-text" style="font-size: small;font-weight: bold;"></label> -->
-        <label id="errorpass" style=" font-size: x-small;"></label>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputPassword4">Confirm Password</label>
-        <input type="password" class="form-control" id="confirmpass" placeholder="Password" onchange="return matchPass()">
-        <label for="" id="errorconfirm" style=" font-size: x-small;"></label>
-      </div>
-    </div>
-    <br>
-    <div class="group">
-      <input id="check" type="checkbox" class="check" checked>
-      <label for="check"><span class="icon"></span> Keep me Signed in</label>
-    </div>
-    <div class="text-center">
-    <button type="submit" style="width: 20%;" class="btn btn-primary">Submit</button><br><br>
-  </div>
-  </form>                                                      
-</div>                                                
-                                                      
-   	</div><!--/col-12-->
-  </div>
+    </div> 
+  </div><!-- /cont -->
+  
 </div>
-                                                
-                                                                                
+
+
+<div class="container">
+  <div class="row">
+    
+    <div class="col-md-12"> 
+      <div class="panel">
+        <div class="panel-body">
+          <h2 style="text-align: center;">SignUp Form</h2><br>
+          <div class="login-form container" style="width: 50%;">
+            
+			<form action="/signup" method="POST" onsubmit="return validate() && pswd() && matchPassword()"  >
+        <input type="email" name="email" placeholder="Username" id="email" required onchange="return validate()">
+        <label for="" id="erroremail" style="color: red; font-size: x-small;"></label>
+        <input type="password" name="password" placeholder="Password" id="password" required  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"  title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+        <label id="text" style="color: red; font-size: x-small;"></label>
+				<input type="password" name="confirmpassword" placeholder="Re enter Password" id="confirmpassword" required onchange="return matchPassword()">
+        <label for="" id="errorconfirm" style="color: red; font-size: x-small;"></label>
+				<input type="submit" value="Register" class="btn btn-primary">
+				<!-- 	<a href="/"><button type="button" class="btn btn-primary">Logout</button></a> -->
+			
+			</form>
+      
+          </div>
+  </div>                                                                    
 <hr>
 
 <div class="container" id="footer">
@@ -164,7 +161,7 @@ meter[value="4"]::-webkit-meter-optimum-value { background: green; }
       
     </div>
   </div>
-</div>
+</div> -->
 
 <hr>
 
@@ -188,9 +185,8 @@ meter[value="4"]::-webkit-meter-optimum-value { background: green; }
     </div>
   </div>
 </footer>
-	<!-- script references -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+
+  <script src="/js/bootstrap.min.js"></script>
     <script type= text/javascript>
       let email = document.getElementById("email");
       let erroremail = document.getElementById("erroremail");
@@ -201,16 +197,15 @@ function validate(){
     // let regval=/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 
     if(regval.test(email.value)){
-        erroremail.innerHTML="Email valid";
-        erroremail.style.color="green";
+        erroremail.innerHTML="";
         return true;
     }else if(email.value==""){
-        erroremail.innerHTML="Email Cannot be empty!!";
+        erroremail.innerHTML="Cannot be empty!!!";
         erroremail.style.color="red";
         return false;
     }
     else{
-        erroremail.innerHTML="Email format is not correct'";
+        erroremail.innerHTML="Email format should be 'abc@gmail.com'";
         erroremail.style.color="red";
         return false;
     }
@@ -218,45 +213,42 @@ function validate(){
     </script>
     <script type="text/javascript">
     
-var pass = document.getElementById('pass');
+var password = document.getElementById('password');
 var meter = document.getElementById('password-strength-meter');
-// var errorpass = document.getElementById('password-strength-text');
-var errorpass = document.getElementById('errorpass');
+var text = document.getElementById('password-strength-text');
+var tex = document.getElementById('text');
 tex.innerHTML="";
 function pswd(){
     var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
     var mediumRegex = new RegExp("^(?=.{6,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
-    if(strongRegex.test(pass.value)){
-        errorpass.innerHTML="password valid";
-        errorpass.style.color="green";
+    if(strongRegex.test(password.value)){
+        tex.innerHTML="";
         return true;
-    }else if(pass.value==""){
-        errorpass.innerHTML="password cannot be empty";
-        errorpass.style.color="red";
+    }else if(password.value==""){
+        tex.innerHTML="";
         return false;
     }
     else{
-        errorpass.innerHTML="Must contain";
-        errorpass.style.color="red";
+        tex.innerHTML="Password should meet requirements";
         return false;
     }
 }
-        
-        var confirmpass = document.getElementById("confirmpass");  
+    </script>
+    <script type="text/javascript">  
+      function matchPassword() {  
+        var password = document.getElementById("password");  
+        var confirmpassword = document.getElementById("confirmpassword");  
         var errorconfirm = document.getElementById("errorconfirm");  
-      function matchPass() {  
-        
-        if(pass.value == confirmpass.value)  
+        if(password.value == confirmpassword.value)  
         {   
-          errorconfirm.innerHTML="Password match "; 
-          errorconfirm.style.color="green";
+          errorconfirm.innerHTML=" ";  
           return true;
         } else {  
           errorconfirm.innerHTML="passwords did not match ";
-          errorconfirm.style.color="red";
           return false;
         }  
       }  
       </script>  
-	</body>
+	
 </html>
+    </body>

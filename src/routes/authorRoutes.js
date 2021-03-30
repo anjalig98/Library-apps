@@ -1,46 +1,72 @@
-const express=require('express');
+
+const express = require('express');
+
 const authorsRouter = express.Router();
+const Authordata = require('../models/authordata');
 function router(nav){
-    var authors=[
-        {
-            title:'Joseph Barbera(1911-2006)',
-            description:'Joseph Roland Barbera was an American animator, director, producer, storyboard artist, and cartoon artist, whose film and television cartoon characters entertained millions of fans worldwide for much of the 20th century.',
-            genre:'',
-            img:'jBarbera.jpg'
-        },
-        {
-            title:'J.K.Rowling(1965-Present)',
-            description:'J. K. Rowling, is a British author and philanthropist. She is best known for writing the Harry Potter fantasy series, which has won multiple awards and sold more than 500 million copies, becoming the best-selling book series in history.',
-            genre:'',
-            img:'JKRowling.jpg'
-        },
-        {
-            title:'Rachel Caine(1962-2020)',
-            description:'Rachel Caine was the pen name of Roxanne Longstreet Conrad  who was an American writer of science fiction, fantasy, mystery, suspense, and horror novels.',
-            genre:'',
-            img:'RachelCaine.jpg'
-        }
-    ]
-
+    
     authorsRouter.get('/',function(req,res){
-        res.render("authors",{
-            nav,
-            title:'Library',
-            authors
+        Authordata.find()
+        .then(function(authors){
+            res.render("authors",{
+                nav,
+                title:'Author',
+                authors
         });
+        
+ 
     });
-
-
-
+    });
+    
     authorsRouter.get('/:id',function(req,res){
-        var id=req.params.id;
+    const id = req.params.id;
+    Authordata.findOne({_id:id})
+    .then(function(author){
         res.render('author',{
             nav,
-            title:'Library',
-            author : authors[id]
-        });
+             title:'Author',
+             author
+      });
+    
+     });
     });
+    authorsRouter.get('/delete/:id',function(req,res){
+        const id = req.params.id;
+        Authordata.remove({_id:id},function(err,red){
+            res.redirect("/authors");
+        })
+        
+    });
+    authorsRouter.get('/update/:id',function(req,res){
+        res.render('updateauthor',{
+            nav,
+            title: 'Library'
+            
+        })
+        var num = req.params.id;
+
+        authorsRouter.post('/update',function(req,res){
+            var item={
+                title:req.body.title,
+                year:req.body.year,
+                genre:req.body.genre,
+                image:req.body.image
+            }
+        
+            
+            
+            Authordata.findOneAndUpdate({_id:num},{$set:item},function(err,red){
+                res.redirect("/authors");
+    
+            })
+
+        
+    });
+
+});
+
     return authorsRouter;
+    
 }
 
-module.exports=router;
+module.exports = router;
